@@ -11,16 +11,17 @@ class Spotify():
         client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
         self.sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
 
-    def getUserPlayList(self, user):
-        playlists_data = self.sp.user_playlists(user)
-    
-        playlists = []
-        for playlist_oject in playlists_data['items']:
-            # playlist_name = playlist_oject['name']
-            playlist_id = playlist_oject['name']
-            playlists.append(playlist_id)
-            # print(playlist_oject)
-            # print(type(playlist_oject))
+    def setUser(self, user):
+        self.user = user
 
-        
+    # gets playlist name, id and image
+    def getUserPlaylists(self):
+        playlists_data = self.sp.user_playlists(self.user)
+        playlists = []
+
+        for playlist_object in playlists_data['items']:
+            playlist_id = playlist_object['name']
+            playlists.append(playlist_id)
+            print(type(playlist_object))
+
         return playlists

@@ -14,7 +14,11 @@ def index():
 
 @app.route('/playlists', methods=['GET','POST'])
 def playlists():
+    # get and set the username
     user = request.form.get('username')
-    playlists = spotify.getUserPlayList(user)
-    print(playlists)
+    spotify.setUser(user)
+
+    # get information for playlist display
+    playlists = spotify.getUserPlaylists()
+
     return render_template('index.html', playlists=playlists)
