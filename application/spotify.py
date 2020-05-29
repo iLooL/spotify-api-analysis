@@ -17,11 +17,12 @@ class Spotify():
     # gets playlist name, id and image
     def getUserPlaylists(self):
         playlists_data = self.sp.user_playlists(self.user)
-        playlists = []
-
+        playlists = {}
+        
         for playlist_object in playlists_data['items']:
-            playlist_id = playlist_object['name']
-            playlists.append(playlist_id)
+            id = playlist_object['id']
+            name = playlist_object['name']
+            playlists[name] = id
             print(type(playlist_object))
 
         return playlists
