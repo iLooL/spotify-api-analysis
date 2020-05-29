@@ -20,5 +20,6 @@ def playlists():
 
     # get information for playlist display
     playlists = spotify.getUserPlaylists()
+    print(playlists)
 
     return render_template('index.html', playlists=playlists)

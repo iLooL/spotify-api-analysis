@@ -23,6 +23,7 @@ class Spotify():
             id = playlist_object['id']
             name = playlist_object['name']
             playlists[name] = id
-            print(type(playlist_object))
+
+        print(playlists)
 
         return playlists
