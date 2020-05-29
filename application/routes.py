@@ -6,6 +6,7 @@ import pickle
 
 model = pickle.load(open('model.pkl', 'rb'))
 spotify = Spotify()
+playlists = ''
 
 @app.route("/")
 @app.route("/index")
@@ -20,6 +21,10 @@ def playlists():
 
     # get information for playlist display
     playlists = spotify.getUserPlaylists()
-    print(playlists)
 
     return render_template('index.html', playlists=playlists)
+
+@app.route('/playlists/<playlistId>')
+def playlist_info(playlistId):
+
+    return render_template("playlist-info.html", playlistId=playlistId)

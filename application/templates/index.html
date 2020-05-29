@@ -1,34 +1,18 @@
-<!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>Deployment Tutorial 1</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='../static/styles.css') }}">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-  
-</head>
+{% extends "layout.html" %}
 
-<body>
-  <main class="wrapper">
-    <h1>Spotify Analysis</h1>
-    <div class="content-wrapper">
-      <form action="{{ url_for('playlists')}}"method="post" class="form-selection">
-          <label>Enter Username</label>
-          <input type="text" name="username" placeholder="username123...">
-          <input type="submit" value="Submit Username">
-      </form>
+{% block content %}
+  <div class="content-wrapper">
+    <form action="{{ url_for('playlists')}}"method="post" class="form-selection">
+        <label>Enter Username</label>
+        <input type="text" name="username" placeholder="username123...">
+        <input type="submit" value="Submit Username">
+    </form>
 
 
-      <div class="playlist-wrapper">
-        {% for playlist in playlists: %}
-          <a href=""><p>{{ playlist }}</p></a>
-        {% endfor %}
-      </div>
+    <div class="playlist-wrapper">
+      {% for playlist in playlists: %}
+        <a href="{{ url_for('playlist_info', playlistId=playlists.get(playlist)) }}">{{ playlist }}</a>
+      {% endfor %}
     </div>
-  </main>
-</body>
-</html>
+  </div>
+{% endblock %}
