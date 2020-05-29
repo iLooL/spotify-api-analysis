@@ -27,3 +27,14 @@ class Spotify():
         print(playlists)
 
         return playlists
+     
+    
+    def getPlaylistSongs(self, playlist_id):
+        info = []
+        playlist = self.sp.user_playlist(self.user, playlist_id)
+        for item in playlist['tracks']['items']:
+            track = item['track']
+            info.append((track['name'], track['artists'][0]['name']))
+
+        return info
+
