@@ -24,7 +24,7 @@
 
 
       <div class="playlist-wrapper">
-        {% for playlist in playlists: %}
+        {% for playlist in playlists.keys(): %}
           <a href=""><p>{{ playlist }}</p></a>
         {% endfor %}
       </div>
