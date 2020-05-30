@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h2>{{ playlistId }}</h2>
+
+    <div class="lyrics">
+        {% for song in playlist_lyrics: %}
+            <p class="lyrics">{{ song }}</p>
+        {% endfor %}
+    </div>
+
+
 {% endblock %}

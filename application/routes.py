@@ -26,5 +26,8 @@ def playlists():
 
 @app.route('/playlists/<playlistId>')
 def playlist_info(playlistId):
+    
+    playlist_songs = spotify.getPlaylistTracks(playlistId)
+    playlist_lyrics = spotify.getPlaylistLyrics(playlist_songs)
 
-    return render_template("playlist-info.html", playlistId=playlistId)
+    return render_template("playlist-info.html", playlist_songs=playlist_songs, playlist_lyrics=playlist_lyrics)

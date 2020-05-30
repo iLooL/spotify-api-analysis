@@ -107,3 +107,8 @@ body {
 .playlist-wrapper a:hover {
 	background: radial-gradient(ellipse at left 300px, var(--light-purple), transparent);
 }
+
+.lyrics p {
+	padding-top: 50px;
+	font-size: 8px;
+}
